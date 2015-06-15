@@ -1,0 +1,7 @@
+(letrec ((peanoint (lambda(n) (peanointhelp n nil)))
+         (peanointhelp (lambda(n lis) (if (== n 0) lis (peanointhelp (- n 1) (cons lis nil)))))
+         (peanoadd (lambda(p q) (if (null p) q (peanoadd (car p) (cons q nil)))))
+	 (unpeanoint (lambda (lis) (unpeanointhelp lis 0)))
+	 (unpeanointhelp (lambda (lis n) (if (null lis) n (unpeanointhelp (car lis) (+ n 1))))))
+	 (unpeanoint (peanoadd (peanoint 1000000)(peanoint 1000000))))
+
