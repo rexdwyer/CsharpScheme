@@ -1,0 +1,55 @@
+CsharpScheme
+
+The purpose of this project is simply to show that I can do something
+of substance in C#.  The "something of substance" is to implement an
+interpreter for a simple purely applicative subset of the Scheme
+programming language.
+
+There are two programs, scheme.cs and trscheme.cs.
+Each program reads a single S-expression from standard input, evaluates
+it, and prints the result on standard output
+
+The first program, scheme.cs, uses an evaluation scheme that fits
+naturally into the object-oriented paradigm. Each type of S-expression
+(atom and list) has its own evaluation method, and the evaluation
+method for a list recursively invokes the evaluation methods of its
+subparts.
+
+The second program deviates from the object-oriented scheme and
+defines a recursive static method for evaluation.  The advantage of
+this implementation is in memory usage.  Specifically, the run-time
+stack doesn't grow during the evaluation of a tail-recursive function.
+The fastfib.txt sample program contains a tail recursive function. The
+evaluation of this program requires the same amount of stack space
+whether finding the third or the three-thousandth Fibonacci number.
+You can't test it out on the 3000th Fibonacci number because you'd get
+integer overflow, but you test it out with the rectest.txt program.
+Try both interpreters.
+
+There are four sample Scheme programs:
+flatten.txt  flattens a nested list.
+slowfib.txt  computes the 30th Fibonacci number in a slow way.
+fastfib.txt  computes the 30th Fibonacci number in a fast way.
+twice.txt    is a contrived example illustrating that the interpreter 
+             correcly handles upward and downward funargs. It should appeal
+             to Python programmers because it involves spam and eggs.
+
+If this program amuses you, you could consider a couple of enhancement.
+1) Make and and or short-circuiting.
+2) Modify the program so that it can read dotted pairs like (A.B) or (A B.C)
+It will currently print dotted pairs but not read them.
+3) Implement cond.  cond provides a syntax that replaces chains of nested ifs.  
+4) Implement let.  let provides a way to define variables.
+
+More information about Scheme can be found here:
+http://groups.csail.mit.edu/mac/projects/scheme/ 
+(In particular cond and let are defined in the Revised Report on the
+Algorithmic Language Scheme.)
+
+This program was my first C# program and required 1-2 days' work.
+You are free to use it in any way you wish that is consistent
+with academic integrity.  That's a fancy way of saying that you won't
+turn it in for credit in a class.
+
+Rex Dwyer
+15 June 2015
